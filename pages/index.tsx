@@ -116,7 +116,7 @@ const Home: NextPage = () => {
             <FrontCard isCardFlipped={isMinted}>
 
 {mounted && isConnected ? ( <svg width="350"
-                height="250" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250"><style>@import url(https://fonts.googleapis.com/css2?family=Monoton);@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i);</style><rect className="rect" width="100%" height="500%" fill="#fff"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Cursive" font-weight="800" font-size="18" fill="red">{text} </text></svg>): ( <Image
+                height="250" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250"><style>@import url(https://fonts.googleapis.com/css2?family=Monoton);@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i);</style><rect className="rect" width="100%" height="500%" fill="#fff"/><text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontFamily="Cursive" fontWeight="800" fontSize="18" fill="red">{text} </text></svg>): ( <Image
                 layout="responsive"
                 src="/mintText.png"
                 width="500"
