@@ -110,12 +110,16 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div style={{ flex: '0 0 auto' }}>
-          <FlipCard>
-          
-            <FrontCard isCardFlipped={isMinted}>
+      {/* <div style={{ flex: '0 0 auto' }}> */}
+      <div style={{ flex: '0 0 auto' }}>
+        <FlipCard>
+        
+          <FrontCard isCardFlipped={isMinted}>
 
-{mounted && isConnected ? ( <svg width="350"
+
+
+          
+          {mounted && isConnected ? ( <svg width="350"
                 height="250" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250"><style>@import url(https://fonts.googleapis.com/css2?family=Monoton);@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i);</style><rect className="rect" width="100%" height="500%" fill="#fff"/><text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontFamily="Cursive" fontWeight="800" fontSize="18" fill="red">{text} </text></svg>): ( <Image
                 layout="responsive"
                 src="/mintText.png"
@@ -126,39 +130,38 @@ const Home: NextPage = () => {
              )}
 
            
-             
-            </FrontCard>
-            <BackCard isCardFlipped={isMinted}>
-              <div style={{ padding: 24 }}>
-                <Image
-                  src="/nft.png"
-                  width="80"
-                  height="80"
-                  alt="SVG Demo NFT"
-                  style={{ borderRadius: 8 }}
-                />
-                <h2 style={{ marginTop: 24, marginBottom: 6 }}>NFT Minted!</h2>
-                <p style={{ marginBottom: 24 }}>
-                  Your NFT will show up in your wallet in the next few minutes.
-                </p>
-                <p style={{ marginBottom: 6 }}>
-                  View on{' '}
-                  <a href={`https://goerli.etherscan.io/tx/${mintData?.hash}`}>
-                    Etherscan
-                  </a>
-                </p>
-                <p>
-                  View on{' '}
-                  <a
-                    href={`https://testnets.opensea.io/assets/goerli/${txData?.to}/1`}
-                  >
-                    Opensea
-                  </a>
-                </p>
-              </div>
-            </BackCard>
-          </FlipCard>
-        </div>
+          </FrontCard>
+          <BackCard isCardFlipped={isMinted}>
+            <div style={{ padding: 24 }}>
+              <Image
+                src="/nft.png"
+                width="80"
+                height="80"
+                alt="SVG Demo NFT"
+                style={{ borderRadius: 8 }}
+              />
+              <h2 style={{ marginTop: 24, marginBottom: 6 }}>NFT Minted!</h2>
+              <p style={{ marginBottom: 24 }}>
+                Your NFT will show up in your wallet in the next few minutes.
+              </p>
+              <p style={{ marginBottom: 6 }}>
+                View on{' '}
+                <a href={`https://goerli.etherscan.io/tx/${mintData?.hash}`}>
+                  Etherscan
+                </a>
+              </p>
+              <p>
+                View on{' '}
+                <a
+                  href={`https://testnets.opensea.io/assets/goerli/${txData?.to}`}
+                >
+                  Opensea
+                </a>
+              </p>
+            </div>
+          </BackCard>
+        </FlipCard>
+      </div>
         
       <footer> Created by Taofeek <a
                     href={`https://twitter.com/taofeek_ob`}
