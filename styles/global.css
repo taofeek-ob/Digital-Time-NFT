@@ -93,7 +93,7 @@ button[data-mint-started="true"]::after {
 }
 
 button[data-mint-done="true"] {
-  opacity: 0;
+  opacity: 1;
   transform: scale(0.85);
 }
 

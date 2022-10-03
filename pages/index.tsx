@@ -14,13 +14,13 @@ import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
 
 
 const contractConfig = {
-  addressOrName: '0xFBA2B65F57EFD96a313ACBAD18Ff5625336AF18E',
+  addressOrName: '0x2308Ffb6CE390AEFcebE66501BC7654Fd29c0546',
   contractInterface: contractInterface,
 };
 
 const Home: NextPage = () => {
   const [mounted, setMounted] = React.useState(false);
-  const [text, setText] = React.useState("Write Custom Text");
+
   React.useEffect(() => setMounted(true), []);
 
 
@@ -29,9 +29,8 @@ const Home: NextPage = () => {
 
   const { config: contractWriteConfig } = usePrepareContractWrite({
     ...contractConfig,
-    functionName: 'mintText',
-    args: [text],
-    enabled: Boolean(text)
+    functionName: 'mintTime',
+    
   });
 
   const {
@@ -89,21 +88,19 @@ const Home: NextPage = () => {
             
             {mounted && isConnected && (
 <>
-<div className='text'>
-<label> Message</label>
-<input type='text'  value={text} onChange={(e)=>setText(e.target.value)}/>
-</div>
+
               <button
                 style={{ marginTop: 24 }}
-                disabled={!mint || isMintLoading || isMintStarted || text===""}
+                disabled={!mint}
                 className="button"
-                data-mint-loading={isMintLoading}
-                data-mint-started={isMintStarted}
+                data-mint-loading={isMintLoading && !isMintStarted}
+                data-mint-started={isMintStarted && !isMinted}
+               
                 onClick={() => mint?.()}
               >
-                {isMintLoading && 'Waiting for approval'}
-                {isMintStarted && 'Minting...'}
-                {!isMintLoading && !isMintStarted && 'Mint'}
+                
+                
+                {isMintLoading ? "Waiting for Approval" : !isMintLoading && isMintStarted && !isMinted ? "Minting" : "Mint"}
               </button>
               </>
             )}
@@ -119,15 +116,13 @@ const Home: NextPage = () => {
 
 
           
-          {mounted && isConnected ? ( <svg width="350"
-                height="250" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250"><style>@import url(https://fonts.googleapis.com/css2?family=Monoton);@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i);</style><rect className="rect" width="100%" height="500%" fill="#fff"/><text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontFamily="Cursive" fontWeight="800" fontSize="18" fill="red">{text} </text></svg>): ( <Image
+          <Image
                 layout="responsive"
-                src="/mintText.png"
+                src="/DigitalTime.png"
                 width="500"
                 height="500"
                 alt="SVG Demo NFT"
               />
-             )}
 
            
           </FrontCard>
@@ -153,7 +148,7 @@ const Home: NextPage = () => {
               <p>
                 View on{' '}
                 <a
-                  href={`https://testnets.opensea.io/assets/goerli/${txData?.to}`}
+                  href={`https://testnets.opensea.io/collection/digital-time`}
                 >
                   Opensea
                 </a>

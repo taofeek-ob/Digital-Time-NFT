@@ -130,19 +130,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "formatDate",
-    "outputs": [
-      {
-        "internalType": "uint8",
-        "name": "",
-        "type": "uint8"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -186,14 +173,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "message",
-        "type": "string"
-      }
-    ],
-    "name": "mintText",
+    "inputs": [],
+    "name": "mintTime",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
