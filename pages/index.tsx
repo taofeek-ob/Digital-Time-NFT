@@ -14,20 +14,24 @@ import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
 
 
 const contractConfig = {
-  addressOrName: '0xd85aC5D55f44e57c8cc24f5e69ac72C3eA4510Eb',
+  addressOrName: '0xFBA2B65F57EFD96a313ACBAD18Ff5625336AF18E',
   contractInterface: contractInterface,
 };
 
 const Home: NextPage = () => {
   const [mounted, setMounted] = React.useState(false);
+  const [text, setText] = React.useState("Write Custom Text");
   React.useEffect(() => setMounted(true), []);
+
 
   const [totalMinted, setTotalMinted] = React.useState(0);
   const { isConnected } = useAccount();
 
   const { config: contractWriteConfig } = usePrepareContractWrite({
     ...contractConfig,
-    functionName: 'makeAnEpicNFT',
+    functionName: 'mintText',
+    args: [text],
+    enabled: Boolean(text)
   });
 
   const {
@@ -65,7 +69,7 @@ const Home: NextPage = () => {
       <div className="container">
         <div style={{ flex: '1 1 auto' }}>
           <div style={{ padding: '24px 24px 24px 0' }}>
-            <h1>SVG NFT Demo Mint</h1>
+            <h1>SVG CUSTOM TEXT NFT MINT</h1>
             <p style={{ margin: '12px 0 24px' }}>
               {totalMinted} minted so far!
             </p>
@@ -81,11 +85,17 @@ const Home: NextPage = () => {
                 Error: {txError.message}
               </p>
             )}
-
-            {mounted && isConnected && !isMinted && (
+           
+            
+            {mounted && isConnected && (
+<>
+<div className='text'>
+<label> Message</label>
+<input type='text'  value={text} onChange={(e)=>setText(e.target.value)}/>
+</div>
               <button
                 style={{ marginTop: 24 }}
-                disabled={!mint || isMintLoading || isMintStarted}
+                disabled={!mint || isMintLoading || isMintStarted || text===""}
                 className="button"
                 data-mint-loading={isMintLoading}
                 data-mint-started={isMintStarted}
@@ -95,22 +105,28 @@ const Home: NextPage = () => {
                 {isMintStarted && 'Minting...'}
                 {!isMintLoading && !isMintStarted && 'Mint'}
               </button>
+              </>
             )}
           </div>
         </div>
 
         <div style={{ flex: '0 0 auto' }}>
           <FlipCard>
+          
             <FrontCard isCardFlipped={isMinted}>
-              <Image
+
+{mounted && isConnected ? ( <svg width="350"
+                height="250" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250"><style>@import url(https://fonts.googleapis.com/css2?family=Monoton);@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i);</style><rect className="rect" width="100%" height="500%" fill="#fff"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Cursive" font-weight="800" font-size="18" fill="red">{text} </text></svg>): ( <Image
                 layout="responsive"
-                src="/SVGNFT.png"
+                src="/mintText.png"
                 width="500"
                 height="500"
                 alt="SVG Demo NFT"
               />
-              <h1 style={{ marginTop: 24 }}>Rainbow NFT</h1>
-              <ConnectButton />
+             )}
+
+           
+             
             </FrontCard>
             <BackCard isCardFlipped={isMinted}>
               <div style={{ padding: 24 }}>

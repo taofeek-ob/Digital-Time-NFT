@@ -23,7 +23,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { wallets } = getDefaultWallets({
-  appName: 'SVG Mint NFT Demo',
+  appName: 'SVG Custom Text NFT',
   chains,
 });
 
