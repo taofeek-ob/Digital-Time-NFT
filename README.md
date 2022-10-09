@@ -1,4 +1,4 @@
-Contract here: https://gist.github.com/peduarte/b48fbf6ff35de431207d68250679a05b
+Contract here: https://goerli.etherscan.io/address/0x2308ffb6ce390aefcebe66501bc7654fd29c0546
 
 ---
 
